@@ -14,7 +14,7 @@ gem 'devise'
 gem 'compass-rails'
 gem 'furatto'
 gem 'font-awesome-rails'
-gem 'simple_form'
+#gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'
