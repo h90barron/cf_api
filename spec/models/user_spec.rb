@@ -8,6 +8,7 @@ describe User do
   it {should respond_to(:email) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:auth_token) }
   
   it { should be_valid }
   
@@ -15,4 +16,5 @@ describe User do
   it { should validate_uniqueness_of(:email).ignoring_case_sensitivity }
   it { validate_confirmation_of(:password) }
   it { should allow_value('example@domain.com').for(:email) }
+  it { should validate_uniqueness_of(:auth_token) }
 end
