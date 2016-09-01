@@ -10,4 +10,6 @@ describe User do
   it { should respond_to(:password_confirmation) }
   
   it { should be_valid }
+  
+  it { should validate_presence_of(:email) }
 end
