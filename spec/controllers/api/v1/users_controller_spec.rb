@@ -8,7 +8,9 @@ describe Api::V1::UsersController do
     end
     
     it "returns the correct email in the response" do
-      user_response = JSON.parse(response.body, symbolize_names: true)
+      user_response = json_response
+      
+      #user_response = JSON.parse(response.body, symbolize_names: true)
       expect(user_response[:email]).to eql @user.email
     end
     
@@ -24,7 +26,7 @@ describe Api::V1::UsersController do
       end
       
       it "renders the correct json for the user just created" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response[:email]).to eql @user_attributes[:email]
       end
     
@@ -40,12 +42,12 @@ describe Api::V1::UsersController do
       end
       
       it "renders json errors" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response).to have_key(:errors)
       end
       
       it "should render error message on why user could not be created" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response[:errors][:email]).to include "is invalid"
       end
       
@@ -62,7 +64,7 @@ describe Api::V1::UsersController do
       end
       
       it "renders the json response with the updated user information" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response[:email]).to eql "goodemail@good.com"
       end
       
@@ -77,17 +79,26 @@ describe Api::V1::UsersController do
       end
       
       it "should render json errors message" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response).to have_key(:errors)
       end
       
       it "should render the error explanation in json" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response
         expect(user_response[:errors][:email]).to include "is invalid"
       end
       
       it { should respond_with 422 }
     end
     
+  end
+  
+  describe "DELETE #destroy" do
+    before(:each) do
+      @user = FactoryGirl.create :user
+      delete :destroy, { id: @user.id }, format: :json
+    end
+    
+    it { should respond_with 204 }
   end
 end
