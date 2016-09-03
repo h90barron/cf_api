@@ -56,11 +56,16 @@ describe Api::V1::UsersController do
   end
   
   describe "PUT/PATCH #update" do
+    before(:each) do
+      @user = FactoryGirl.create :user
+      request.headers['Authorization'] = @user.auth_token
+    end
     
     context "when user is successfully updated" do
       before(:each) do
         @user = FactoryGirl.create :user
-        patch :update, { id: @user.id, user: { email: "goodemail@good.com" } }, format: :json
+        #request.headers['Authorization'] = @user.auth_token
+        patch :update,  { id: @user.id, user: { email: "goodemail@good.com" } }, format: :json
       end
       
       it "renders the json response with the updated user information" do
@@ -75,6 +80,7 @@ describe Api::V1::UsersController do
     context "when user is not successfully updated" do
       before(:each) do
         @user = FactoryGirl.create :user
+        #request.headers['Authorization'] = @user.auth_token
         patch :update, { id: @user.id, user: { email: "1" } }, format: :json
       end
       
@@ -96,6 +102,7 @@ describe Api::V1::UsersController do
   describe "DELETE #destroy" do
     before(:each) do
       @user = FactoryGirl.create :user
+      request.headers[:Authorization] = @user.auth_token
       delete :destroy, { id: @user.id }, format: :json
     end
     
