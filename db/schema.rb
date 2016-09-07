@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906010032) do
+ActiveRecord::Schema.define(version: 20160907172918) do
 
   create_table "locations", force: :cascade do |t|
-    t.datetime "time"
     t.decimal  "longitude",  precision: 9, scale: 6
     t.decimal  "latitude",   precision: 9, scale: 6
     t.integer  "user_id"
