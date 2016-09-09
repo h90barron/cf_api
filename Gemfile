@@ -19,6 +19,7 @@ gem 'font-awesome-rails'
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'ffaker'
   gem 'sqlite3'
 end
