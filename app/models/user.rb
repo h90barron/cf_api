@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   validates :auth_token, uniqueness: true
+  validates :longitude, :numericality => { less_than_or_equal_to: 180.0, greater_than_or_equal_to: -180.0 }
+  validates :latitude, :numericality => { less_than_or_equal_to: 90.0, greater_than_or_equal_to: -90.0 }
+  validates :radius, :numericality => { only_integer: true }
   before_create :create_authentication_token!
   
   devise :database_authenticatable, :registerable,
@@ -11,4 +14,6 @@ class User < ActiveRecord::Base
       self.auth_token = Devise.friendly_token
     end
   end
+  
+  
 end

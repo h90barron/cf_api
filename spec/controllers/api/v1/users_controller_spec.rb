@@ -97,7 +97,26 @@ describe Api::V1::UsersController do
       it { should respond_with 422 }
     end
     
+    context "when user is not sucessfully updated due to lat/long" do
+      before(:each) do
+        @user = FactoryGirl.create :user
+      end
+      
+      it "should fail validation of longitude out of range" do
+        patch :update, { id: @user.id, user: { longitude: -190.0 } }, format: :json
+        user_response = json_response
+        expect(user_response).to have_key(:errors)
+      end
+      
+      it "should fail validation of latitude out of range" do
+        patch :update, { id: @user.id, user: { latitude: 120.0 } }, format: :json
+        user_response = json_response
+        expect(user_response).to have_key(:errors)
+      end
+    end
+    
   end
+  
   
   describe "DELETE #destroy" do
     before(:each) do
