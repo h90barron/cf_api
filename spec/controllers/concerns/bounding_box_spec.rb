@@ -11,8 +11,8 @@ describe Bounding_Box do
   before(:each) do
     @first_user = FactoryGirl.create(:user, latitude: 34.752332, longitude: -92.340817)
     @second_user = FactoryGirl.create(:user, latitude: 34.752332, longitude: -92.305284)
-    @third_user = FactoryGirl.create(:user, latitude: 34.753038, longitude: -92.275947)
-    @fourth_user = FactoryGirl.create(:user, latitude: 34.770525, longitude: -92.222242)
+    @third_user = FactoryGirl.create(:user, latitude: 34.753038, longitude: -92.275947) #over 5k box
+    @fourth_user = FactoryGirl.create(:user, latitude: 34.770525, longitude: -92.222242)  #over 5k box
   end
   
  describe "#distance" do

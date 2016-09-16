@@ -21,7 +21,6 @@ describe Api::V1::LocationsController do
   
   describe "GET#index" do
     before(:each) do
-      4.times { FactoryGirl.create :location }
       @user = FactoryGirl.create :user
       request.headers['Authorization'] = @user.auth_token
     end
@@ -45,7 +44,7 @@ describe Api::V1::LocationsController do
       end
       
       it "should return json error" do
-        expect(json_response[:errors]).to be_present
+        expect(json_response).to have_key(:errors)
       end
       
       it { should respond_with 401 }

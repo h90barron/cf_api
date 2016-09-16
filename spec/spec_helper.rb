@@ -25,6 +25,7 @@ RSpec.configure do |config|
   config.include Helpers::JsonHelpers, :type => :controller
   config.include Devise::TestHelpers, :type => :controller
   config.include Devise::TestHelpers, :type => :controller
+  config.include Geo_Helpers, :type => :controller
 
 end
   

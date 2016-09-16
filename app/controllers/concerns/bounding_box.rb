@@ -20,7 +20,7 @@ module Bounding_Box
   #   return users_in_bound
   # end
   
-  def users_in_bounding_box radius, lat, long
+  def users_in_bounding_box radius, lat, long, min_max_flag = false
     radius = miles_to_km radius
     
     earth_radius = 6371
@@ -41,12 +41,18 @@ module Bounding_Box
     maxlong = radians_to_degree maxlong
     minlong = radians_to_degree minlong
     
+    if min_max_flag
+      return maxlat.round(6), minlat.round(6), maxlong.round(6), minlong.round(6)
+      
+    else
+    
     users_in_bound = User.where("latitude >= ? AND latitude <= ? AND 
                              longitude >= ? AND longitude <= ?", minlat, maxlat, minlong, maxlong)
     # users_in_bound = users_in_bound.select{
     #   |u| distance(lat, long, u.latitude, u.longitude) > radius
     # }
      return users_in_bound
+    end
   end
   
   
