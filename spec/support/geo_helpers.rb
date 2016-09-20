@@ -2,7 +2,7 @@ module Geo_Helpers
   include Bounding_Box
   #####################################################
   # Module for generating users within a given area for
-  # testing clustering methods. Must be include in console
+  # testing clustering methods. Must be included in console
   # environment manually if needed.
   #######################################################
   
@@ -25,14 +25,6 @@ module Geo_Helpers
     
     return lat, long
   end
-    
   
-    # values = users_in_bounding_box bounding_radius, lat, long, true
-    # maxlat = values[0]
-    # minlat = values[1]
-    # maxlong = values[2]
-    # minlong = values[3]
-    
-    
   
 end

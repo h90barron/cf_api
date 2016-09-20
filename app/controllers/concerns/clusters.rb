@@ -1,8 +1,15 @@
 module Clusters 
-  #to start we will be setting the location and number of clusters.
-  #would like to eventually use methods such as kmeans++ for cluster
-  #selection. For now location of clusters will be passed to method.
-  #
+  ################################################################
+  # This module will contain the needed methods for centroid calculations
+  #   of user clusters. 
+  # Previously used methods have been removed. kmeans clustering
+  #   implementation was cumbersome. Consider using raw sql for   
+  #   kmeans or use a modified kernel density technique. 
+  # TODO: kmeans clustering using known starting points. Kmeans++
+  #   in the future.   
+  ###############################################################
+
+  
   # def kmeans_clustering local_users, starting_points
   #   local_users.each do |user|
   #     starting_points.each_with_index do |cluster_point, i|

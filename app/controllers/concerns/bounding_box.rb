@@ -1,5 +1,15 @@
 module Bounding_Box
-
+  ############################################################################
+  # This if for all functions related to finding users within a given radius.
+  #   'users_in_bounding_box' will return the users within a bounding box.
+  #   'distance' can then be used to check if the user falls within the 
+  #   circular radius. It should be noted that we will most likely neglect  
+  #   using haversine distance in cluster calculations since the radius of 
+  #   clusters will be small enough to ignore curvature. 
+  ############################################################################
+  
+  
+  
   # def users_in_bounding_box radius, lat, long
   #   radius = miles_to_km radius
     
@@ -19,6 +29,10 @@ module Bounding_Box
       
   #   return users_in_bound
   # end
+  
+  # TODO: use 'distance' to check if users in box are also in 
+  #   circular radius.
+  #   Can return min/max of lat/long or users in a bounding box.
   
   def users_in_bounding_box radius, lat, long, min_max_flag = false
     radius = miles_to_km radius
@@ -55,6 +69,7 @@ module Bounding_Box
     end
   end
   
+  # REVIEW: make sure this is returning the correct distance
   
   def distance lat1, long1, lat2, long2
     #compute

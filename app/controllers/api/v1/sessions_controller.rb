@@ -19,5 +19,13 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
   
+  # create and save new auth_token to deny access with current auth_token
+  def destroy
+    user = current_user
+    user.create_authentication_token!
+    user.save
+    head 204
+  end
+  
   
 end

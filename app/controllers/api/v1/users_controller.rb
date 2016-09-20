@@ -1,6 +1,8 @@
 class Api::V1::UsersController < ApplicationController
   before_action :token_authentication!, only: [:update, :destroy]
   respond_to :json
+  
+  # REVIEW: may not need show action
   def show
     respond_with User.find(params[:id])
   end
@@ -27,7 +29,6 @@ class Api::V1::UsersController < ApplicationController
   end
   
   def destroy
-    #user = User.find(params[:id])
     user = current_user
     user.destroy
     head 204

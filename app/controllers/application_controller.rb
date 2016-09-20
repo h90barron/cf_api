@@ -5,5 +5,6 @@ class ApplicationController < ActionController::Base
   
   include Authenticate
   include Bounding_Box
+  # include Clusters
   
 end
