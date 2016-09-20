@@ -2,8 +2,8 @@ module Geo_Helpers
   include Bounding_Box
   #####################################################
   # Module for generating users within a given area for
-  # testing clustering methods. Must be included in console
-  # environment manually if needed.
+  #   testing clustering methods. Must be included in console
+  #   environment manually if needed.
   #######################################################
   
   
