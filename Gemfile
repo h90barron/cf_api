@@ -15,6 +15,7 @@ gem 'compass-rails'
 gem 'furatto'
 gem 'font-awesome-rails'
 #gem 'simple_form'
+#gem 'active_model_serializers', '~> 0.10.2'
 
 group :development, :test do
   gem 'byebug'
